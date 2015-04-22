@@ -17,7 +17,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    UILocalNotification *noti = [[UILocalNotification alloc]init];
+    noti.fireDate = [[NSDate new] dateByAddingTimeInterval:5];
+    [noti setRepeatInterval:NSCalendarUnitMinute];
+    noti.alertBody = @"大爷 好久没来玩儿了";
+    //传递参数
+    noti.userInfo = @{@"name": @"小丽"};
+//    图标上面的数量
+    noti.applicationIconBadgeNumber = 3;
+    
+    [[UIApplication sharedApplication]scheduleLocalNotification:noti];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
